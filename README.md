@@ -9,8 +9,8 @@
 파라미터 수정을 위한 컨트롤러는 추가적으로 setParam 함수를 통해 컨트롤 할 파라미터의 수소를 저장해준다.
 
 모든 컨트롤러를 생성한 이후 addChild 함수를 통해 트리구조의 관계설정을 해준다.
-[컨트롤로 구현](https://github.com/Kihoon0716/EmbeddedSW_Self-driving/blob/master/exam_cv.cpp#L531)
-[활용](https://github.com/Kihoon0716/EmbeddedSW_Self-driving/blob/master/exam_cv.cpp#L876)
+[컨트롤로 구현 소스코드](https://github.com/Kihoon0716/EmbeddedSW_Self-driving/blob/master/exam_cv.cpp#L531)
+[활용 소스코드](https://github.com/Kihoon0716/EmbeddedSW_Self-driving/blob/master/exam_cv.cpp#L876)
 ```cpp
     p = params; // 파라미터 객체
 
@@ -40,13 +40,44 @@
   // 키보드 컨트롤러 실행
     main->start();
 ```
-### 화면전환
+### 화면전환 및 소켓통신으로 영상 송수신
 
-### 소켓통신으로 영상 수신
+영상처리의 각 기능별로 모니터링이 가능하게끔 화면전환 기능을 추가하였다.
+```cpp
+ 				else if(key == "1"){  // 원본 화면
+                    p->mode.view = 1;
+                }else if(key == "2"){  // homography 상단 점
+                    p->mode.view = 2;
+                }else if(key == "3"){  // homography rgb
+                    p->mode.view = 3;
+                }else if(key == "4"){  // homography 이진화
+                    p->mode.view = 4;
+                }else if(key == "5"){  // 돌발표지
+                    p->mode.view = 5;
+                }else if(key == "6"){  // 신호등 빨간색
+                    p->mode.view = 6;
+                }else if(key == "7"){  // 신호등 주황색
+                    p->mode.view = 7;
+                }else if(key == "8"){  // 신호등 초록색
+                    p->mode.view = 8;
+                }else if(key == "9"){  // 신호등 화살표
+                    p->mode.view = 9;
+                }
+```
+[영상송신 소스코드](https://github.com/Kihoon0716/EmbeddedSW_Self-driving/blob/master/exam_cv.cpp#L123)
+[영상수신 소스코드](https://github.com/Kihoon0716/EmbeddedSW_Self-driving/blob/master/server.cpp#L1)
 
-### 시점변환
 
 ### 로지컬 무빙
 
-### 동작 영상
+추차장미션, 추월차로 미션과 같이 하드코딩이 필요한 미션을 위해서 정해진 로직대로 움직이는것을 쉽고 빠르게 구현이 가능하도록 LogicalMove라는 클래스를 만들었다.
+해당 클래스는 addLogic이라는 함수를 활용해서 로직을 여러 개 추가해서 시나리오대로 움직이도록 하는것이 가능하다.
+아래와 같이 하나의 로직은 인풋값으로 바퀴의 각도, 이동거리, 벽을 감지했을 때 멈출것인지, 이동이 완료된 후에 부저를 울릴것인지 등의 값을 입력받는다.
+```cpp
+logic(int angle, int distance, bool detectWall, bool buzzer)
+```
+[소스코드](https://github.com/Kihoon0716/EmbeddedSW_Self-driving/blob/master/exam_cv.cpp#L313)
 
+## 동작 영상
+[주차장 + 차단바 테스트](https://www.youtube.com/watch?v=lu_Kf-L-fDY)
+[추월차로 + 신호등](https://www.youtube.com/watch?v=-OvMKWkKgOg)
