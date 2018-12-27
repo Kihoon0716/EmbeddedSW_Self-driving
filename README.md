@@ -6,7 +6,9 @@
 
 
 ```cpp
-    p = params;
+    p = params; // 파라미터 객체
+
+  // 각 메뉴에 해당하는 컨트롤러 생성
     //main
     Controller * main = new Controller("Main", true);
     
@@ -21,14 +23,15 @@
             binarization->setParam(&params->lineDetection.binarization);
 
 .....
-  
+
+  // 각 메뉴의 자식, 부모관계 설정
     main->addChild(lineDetection)
         ->addChild(trafficLight)
         ->addChild(stopSign)
         ->addChild(mode)
         ->setIsMain();
 .....
-  
+  // 키보드 컨트롤러 실행
     main->start();
 ```
 ### 화면전환
