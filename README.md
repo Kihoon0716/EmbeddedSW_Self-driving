@@ -65,6 +65,7 @@
                 }
 ```
 [영상송신 소스코드](https://github.com/Kihoon0716/EmbeddedSW_Self-driving/blob/master/exam_cv.cpp#L123)
+
 [영상수신 소스코드](https://github.com/Kihoon0716/EmbeddedSW_Self-driving/blob/master/server.cpp#L1)
 
 
@@ -80,4 +81,5 @@ logic(int angle, int distance, bool detectWall, bool buzzer)
 
 ## 동작 영상
 [주차장 + 차단바 테스트](https://www.youtube.com/watch?v=lu_Kf-L-fDY)
+
 [추월차로 + 신호등](https://www.youtube.com/watch?v=-OvMKWkKgOg)
